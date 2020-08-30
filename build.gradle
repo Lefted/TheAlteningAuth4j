@@ -21,10 +21,10 @@ dependencies {
 }
 
 // Signing
-apply plugin: 'signing'
-signing {
-    sign configurations.archives
-}
+//apply plugin: 'signing'
+//signing {
+//    sign configurations.archives
+//}
 
 // Deploying
 apply plugin: 'maven'
@@ -44,51 +44,51 @@ artifacts {
     archives javadocJar, sourcesJar
 }
 // Build, sign, and upload
-uploadArchives {
-    repositories {
-        mavenDeployer {
-
-            // Sign POM
-            beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
-
-            // Destination
-            repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
-                authentication(userName: nexusUsername, password: nexusPassword)
-            }
-            snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots/") {
-                authentication(userName: nexusUsername, password: nexusPassword)
-            }
-
-            // Add required metadata to POM
-            pom.project {
-                name 'TheAlteningAuth4j'
-                packaging 'jar'
-                description 'Java Wrapper for TheAltening Auth API'
-                url 'https://github.com/TheAltening/TheAlteningAuth4j'
-
-                scm {
-                    connection 'scm:git:git://github.com/TheAltening/TheAlteningAuth4j.git'
-                        developerConnection 'scm:git:ssh://github.com/TheAltening/TheAlteningAuth4j.git'
-                        url 'http://github.com/TheAltening/TheAlteningAuth4j/tree/master'
-                }
-
-                licenses {
-                    license {
-                        name 'GNU Lesser General Public License version 3'
-                        url 'https://www.gnu.org/licenses/lgpl-3.0.txt'
-                    }
-                }
-
-                developers {
-                    developer {
-                        id 'Trol1337'
-                        name 'Karolis Rokas'
-                        email 'trol1337gaming@gmail.com'
-                        organization 'TheAltening'
-                        organizationUrl 'https://thealtening.com'
-                    }
-                }
-            }
-        }
-    }
-}
+//uploadArchives {
+//    repositories {
+//        mavenDeployer {
+//
+//            // Sign POM
+//            beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+//
+//            // Destination
+//            repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
+//                authentication(userName: nexusUsername, password: nexusPassword)
+//            }
+//            snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots/") {
+//                authentication(userName: nexusUsername, password: nexusPassword)
+//            }
+//
+//            // Add required metadata to POM
+//            pom.project {
+//                name 'TheAlteningAuth4j'
+//                packaging 'jar'
+//                description 'Java Wrapper for TheAltening Auth API'
+//                url 'https://github.com/TheAltening/TheAlteningAuth4j'
+//
+//                scm {
+//                    connection 'scm:git:git://github.com/TheAltening/TheAlteningAuth4j.git'
+//                        developerConnection 'scm:git:ssh://github.com/TheAltening/TheAlteningAuth4j.git'
+//                        url 'http://github.com/TheAltening/TheAlteningAuth4j/tree/master'
+//                }
+//
+//                licenses {
+//                    license {
+//                        name 'GNU Lesser General Public License version 3'
+//                        url 'https://www.gnu.org/licenses/lgpl-3.0.txt'
+//                    }
+//                }
+//
+//                developers {
+//                    developer {
+//                        id 'Trol1337'
+//                        name 'Karolis Rokas'
+//                        email 'trol1337gaming@gmail.com'
+//                        organization 'TheAltening'
+//                        organizationUrl 'https://thealtening.com'
+//                    }
+//                }
+//            }
+//        }
+//    }
+//}//

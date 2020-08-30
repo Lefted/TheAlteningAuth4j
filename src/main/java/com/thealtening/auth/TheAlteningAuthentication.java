@@ -35,15 +35,20 @@ import java.security.cert.X509Certificate;
  */
 public final class TheAlteningAuthentication {
 
+    // INSTANCE
+    public static TheAlteningAuthentication instance = new TheAlteningAuthentication(AlteningServiceType.MOJANG);
+    
+    // ATTRIBUTES
     private final ServiceSwitcher serviceSwitcher = new ServiceSwitcher();
     private final SSLController sslController = new SSLController();
-    private static TheAlteningAuthentication instance;
     private AlteningServiceType service;
 
+    // CONSTRUCTOR
     private TheAlteningAuthentication(AlteningServiceType service) {
         this.updateService(service);
     }
 
+    // METHODS
     public void updateService(AlteningServiceType service) {
         if (service == null || this.service == service) {
             return;
@@ -66,15 +71,15 @@ public final class TheAlteningAuthentication {
         return service;
     }
 
-    public static TheAlteningAuthentication mojang() {
+    public TheAlteningAuthentication mojang() {
         return withService(AlteningServiceType.MOJANG);
     }
 
-    public static TheAlteningAuthentication theAltening() {
+    public TheAlteningAuthentication theAltening() {
         return withService(AlteningServiceType.THEALTENING);
     }
 
-    private static TheAlteningAuthentication withService(AlteningServiceType service) {
+    private TheAlteningAuthentication withService(AlteningServiceType service) {
         if (instance == null) {
             instance = new TheAlteningAuthentication(service);
         } else if (instance.getService() != service) {
